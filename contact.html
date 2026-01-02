@@ -1,0 +1,1991 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Glamour Beauty Salon</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Preloader */
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 99999;
+            transition: opacity 0.5s ease;
+        }
+
+        .preloader.hide {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .loader {
+            display: flex;
+            gap: 10px;
+        }
+
+        .loader span {
+            width: 15px;
+            height: 15px;
+            background: #d4af37;
+            border-radius: 50%;
+            animation: bounce 0.6s infinite alternate;
+        }
+
+        .loader span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .loader span:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes bounce {
+            to {
+                transform: translateY(-20px);
+            }
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .header.scrolled {
+            background: linear-gradient(135deg, #0f0f1e 0%, #0a1128 100%);
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            position: relative;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #d4af37;
+            z-index: 1002;
+        }
+
+        .logo-icon {
+            font-size: 1.8rem;
+        }
+
+        .logo-text {
+            color: #d4af37;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: #fff;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 0.5rem 0;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: #d4af37;
+        }
+
+        .nav-link i {
+            font-size: 0.7rem;
+            transition: transform 0.3s ease;
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: #1a1a2e;
+            list-style: none;
+            min-width: 200px;
+            padding: 1rem 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            margin-top: 0.5rem;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown:hover .nav-link i {
+            transform: rotate(180deg);
+        }
+
+        .dropdown-menu li {
+            padding: 0;
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 0.7rem 1.5rem;
+            color: #fff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .dropdown-menu a:hover {
+            background: #d4af37;
+            color: #1a1a2e;
+            padding-left: 2rem;
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #d4af37 0%, #f2d16b 100%);
+            color: #1a1a2e;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+        }
+
+        .btn-lg {
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+            z-index: 1002;
+        }
+
+        .menu-toggle span {
+            width: 28px;
+            height: 3px;
+            background: #d4af37;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        .mobile-close {
+            display: none;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #d4af37;
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: #1a1a2e;
+            z-index: 1003;
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .mobile-close:hover {
+            transform: rotate(90deg);
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.5);
+        }
+
+        .mobile-book-btn {
+            display: none;
+        }
+
+        /* Page Header */
+        .page-header {
+            margin-top: 70px;
+            height: 400px;
+            background: linear-gradient(135deg, rgba(26, 26, 46, 0.9) 0%, rgba(22, 33, 62, 0.8) 100%),
+                url('https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&auto=format&fit=crop&w=1974&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+        }
+
+        .page-header-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .page-header-content p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .breadcrumb {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .breadcrumb a {
+            color: #d4af37;
+            text-decoration: none;
+        }
+
+        .breadcrumb span {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 3rem;
+        }
+
+        /* Contact Info Cards */
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact-card {
+            background: #fff;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.12);
+        }
+
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #d4af37 0%, #f2d16b 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .contact-icon i {
+            font-size: 1.5rem;
+            color: #1a1a2e;
+        }
+
+        .contact-details h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: #1a1a2e;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-details p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .contact-details a {
+            color: #d4af37;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-details a:hover {
+            color: #1a1a2e;
+        }
+
+        /* Social Links */
+        .social-card {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #fff;
+        }
+
+        .social-card h3 {
+            color: #d4af37;
+        }
+
+        .social-card p {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-link {
+            width: 45px;
+            height: 45px;
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid #d4af37;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #d4af37;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+        }
+
+        .social-link:hover {
+            background: #d4af37;
+            color: #1a1a2e;
+            transform: translateY(-3px);
+        }
+
+        /* Contact Form */
+        .contact-form-wrapper {
+            background: #fff;
+            border-radius: 15px;
+            padding: 3rem;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .form-header {
+            margin-bottom: 2rem;
+        }
+
+        .form-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: #1a1a2e;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-header p {
+            color: #666;
+        }
+
+        .contact-form {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 500;
+            color: #1a1a2e;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .form-group label .required {
+            color: #d4af37;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            border: 2px solid #f0f0f0;
+            border-radius: 10px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: #f8f9fa;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #d4af37;
+            background: #fff;
+            box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.1);
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: #999;
+        }
+
+        .form-group .input-icon {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #999;
+        }
+
+        .form-check {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+
+        .form-check input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            accent-color: #d4af37;
+            cursor: pointer;
+            margin-top: 3px;
+        }
+
+        .form-check label {
+            font-size: 0.9rem;
+            color: #666;
+            cursor: pointer;
+        }
+
+        .form-check label a {
+            color: #d4af37;
+            text-decoration: none;
+        }
+
+        .submit-btn {
+            padding: 1.2rem 3rem;
+            background: linear-gradient(135deg, #d4af37 0%, #f2d16b 100%);
+            color: #1a1a2e;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+        }
+
+        .submit-btn i {
+            transition: transform 0.3s ease;
+        }
+
+        .submit-btn:hover i {
+            transform: translateX(5px);
+        }
+
+        /* Map Section */
+        .map-section {
+            padding: 0;
+        }
+
+        .map-container {
+            position: relative;
+            height: 500px;
+            background: #1a1a2e;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            filter: grayscale(20%);
+        }
+
+        .map-overlay {
+            position: absolute;
+            top: 50px;
+            left: 50px;
+            background: #fff;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.2);
+            max-width: 350px;
+            z-index: 10;
+        }
+
+        .map-overlay h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: #1a1a2e;
+            margin-bottom: 1rem;
+        }
+
+        .map-overlay-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .map-overlay-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .map-overlay-item i {
+            color: #d4af37;
+            font-size: 1.1rem;
+            margin-top: 3px;
+        }
+
+        .map-overlay-item span {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .get-directions-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+            padding: 0.8rem 1.5rem;
+            background: linear-gradient(135deg, #d4af37 0%, #f2d16b 100%);
+            color: #1a1a2e;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .get-directions-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 80px 0;
+            background: #fff;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-subtitle {
+            color: #d4af37;
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: #1a1a2e;
+            margin-bottom: 1rem;
+        }
+
+        .section-description {
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: #f8f9fa;
+            border-radius: 15px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            color: #1a1a2e;
+            flex: 1;
+        }
+
+        .faq-icon {
+            width: 35px;
+            height: 35px;
+            background: #d4af37;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1a1a2e;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        .faq-item.active .faq-question {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+        }
+
+        .faq-item.active .faq-question h4 {
+            color: #fff;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq-answer-content {
+            padding: 1.5rem 2rem;
+            color: #666;
+            line-height: 1.8;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+        }
+
+        /* Hours Section */
+        .hours-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, rgba(26, 26, 46, 0.95) 0%, rgba(22, 33, 62, 0.95) 100%),
+                url('https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1769&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #fff;
+        }
+
+        .hours-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .hours-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hours-content p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .hours-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 3rem;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .hours-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: #d4af37;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .hours-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .hours-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .hours-item:last-child {
+            border-bottom: none;
+        }
+
+        .hours-item .day {
+            font-weight: 500;
+        }
+
+        .hours-item .time {
+            color: #d4af37;
+            font-weight: 600;
+        }
+
+        .hours-item.closed .time {
+            color: #ff6b6b;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #d4af37 0%, #f2d16b 100%);
+            color: #1a1a2e;
+            text-align: center;
+            padding: 60px 0;
+        }
+
+        .cta-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .cta-text h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .cta-text p {
+            font-size: 1.1rem;
+        }
+
+        .cta-btn {
+            padding: 1rem 2.5rem;
+            background: #1a1a2e;
+            color: #d4af37;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            transition: all 0.3s ease;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Footer */
+
+        .footer-col{
+            text-align: left;
+        }
+        .footer {
+            background: #1a1a2e;
+            color: #fff;
+        }
+
+        .footer-top {
+            padding: 60px 0;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #d4af37;
+            margin-bottom: 1rem;
+        }
+
+        .footer-about {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid #d4af37;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #d4af37;
+            transition: all 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            background: #d4af37;
+            color: #1a1a2e;
+        }
+
+        .footer-col h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: #d4af37;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #d4af37;
+        }
+
+        .footer-contact {
+            list-style: none;
+        }
+
+        .footer-contact li {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .footer-contact i {
+            color: #d4af37;
+            margin-top: 5px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 20px 0;
+        }
+
+        .footer-bottom-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .footer-bottom-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+        }
+
+        .footer-bottom-links a:hover {
+            color: #d4af37;
+        }
+
+        /* Utility */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #d4af37 0%, #f2d16b 100%);
+            color: #1a1a2e;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.4);
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+        }
+
+        .back-to-top.show {
+            display: flex;
+        }
+
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: #25d366;
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
+            z-index: 999;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+            }
+
+            70% {
+                box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            }
+        }
+
+        /* Success Modal */
+        .success-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+        }
+
+        .success-modal.show {
+            display: flex;
+        }
+
+        .modal-content {
+            background: #fff;
+            border-radius: 20px;
+            padding: 3rem;
+            text-align: center;
+            max-width: 400px;
+            animation: modalSlide 0.3s ease;
+        }
+
+        @keyframes modalSlide {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #d4af37 0%, #f2d16b 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+        }
+
+        .modal-icon i {
+            font-size: 2.5rem;
+            color: #1a1a2e;
+        }
+
+        .modal-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: #1a1a2e;
+            margin-bottom: 1rem;
+        }
+
+        .modal-content p {
+            color: #666;
+            margin-bottom: 2rem;
+        }
+
+        .modal-btn {
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, #d4af37 0%, #f2d16b 100%);
+            color: #1a1a2e;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .modal-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 992px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .hours-container {
+                grid-template-columns: 1fr;
+            }
+
+            .map-overlay {
+                position: static;
+                margin: 20px;
+                max-width: none;
+            }
+
+            .map-container {
+                height: auto;
+            }
+
+            .map-container iframe {
+                height: 400px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 0;
+                flex-direction: column;
+                background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+                width: 85%;
+                max-width: 350px;
+                height: 100vh;
+                padding: 100px 2rem 2rem;
+                gap: 0;
+                transition: left 0.4s ease;
+                overflow-y: auto;
+                box-shadow: 5px 0 20px rgba(0, 0, 0, 0.5);
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-item {
+                width: 100%;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .nav-link {
+                display: flex;
+                justify-content: space-between;
+                padding: 1rem 0;
+                width: 100%;
+                font-size: 1rem;
+            }
+
+            .dropdown-menu {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                background: rgba(212, 175, 55, 0.1);
+                margin: 0.5rem 0 0 0;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+                padding: 0;
+            }
+
+            .dropdown.active .dropdown-menu {
+                max-height: 500px;
+                padding: 0.5rem 0;
+            }
+
+            .dropdown.active .nav-link i {
+                transform: rotate(180deg);
+            }
+
+            .mobile-close {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .nav-actions .btn-primary {
+                display: none;
+            }
+
+            .mobile-book-btn {
+                display: block;
+                width: 100%;
+                text-align: center;
+                padding: 1rem 1.5rem;
+                background: linear-gradient(135deg, #d4af37 0%, #f2d16b 100%);
+                color: #1a1a2e;
+                text-decoration: none;
+                border-radius: 50px;
+                font-weight: 600;
+                margin-top: 1.5rem;
+            }
+
+            .page-header {
+                height: 300px;
+            }
+
+            .page-header-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-bottom-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-bottom-links {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .cta-content {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo-text {
+                font-size: 1.3rem;
+            }
+
+            .nav-menu {
+                width: 90%;
+            }
+
+            .contact-form-wrapper {
+                padding: 2rem 1.5rem;
+            }
+
+            .hours-card {
+                padding: 2rem;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="logo">
+                    <span class="logo-icon"><i class="fas fa-spa"></i></span>
+                    <span class="logo-text">Glamour</span>
+                </a>
+
+                <ul class="nav-menu" id="navMenu">
+                    <button class="mobile-close" id="mobileClose">
+                        <i class="fas fa-times"></i>
+                    </button>
+
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="about.html" class="nav-link">About</a>
+                    </li>
+                    <li class="nav-item dropdown" id="servicesDropdown">
+                        <a href="services.html" class="nav-link dropdown-toggle">
+                            Services
+                            <i class="fas fa-chevron-down"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="services.html#hair">Hair Care</a></li>
+                            <li><a href="services.html#skin">Skin Care</a></li>
+                            <li><a href="services.html#makeup">Makeup</a></li>
+                            <li><a href="services.html#spa">Spa & Wellness</a></li>
+                            <li><a href="services.html#nails">Nail Art</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="gallery.html" class="nav-link">Gallery</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="team.html" class="nav-link">Our Team</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="pricing.html" class="nav-link">Pricing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="blog.html" class="nav-link">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="contact.html" class="nav-link active">Contact</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="booking.html" class="mobile-book-btn">Book Now</a>
+                    </li>
+                </ul>
+
+                <div class="nav-actions">
+                    <a href="booking.html" class="btn btn-primary">Book Now</a>
+                    <button class="menu-toggle" id="menuToggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="page-header-content">
+            <h1>Contact Us</h1>
+            <p>We'd Love to Hear From You</p>
+            <div class="breadcrumb">
+                <a href="index.html">Home</a>
+                <span>/</span>
+                <span>Contact</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container">
+            <div class="contact-container">
+                <!-- Contact Info -->
+                <div class="contact-info">
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Visit Us</h3>
+                            <p>123 Beauty Street, Fashion District<br>New York, NY 10001</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Call Us</h3>
+                            <p><a href="tel:+11234567890">(123) 456-7890</a><br>
+                                <a href="tel:+11234567891">(123) 456-7891</a>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Email Us</h3>
+                            <p><a href="mailto:info@glamourbeauty.com">info@glamourbeauty.com</a><br>
+                                <a href="mailto:booking@glamourbeauty.com">booking@glamourbeauty.com</a>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Working Hours</h3>
+                            <p>Monday - Saturday: 9:00 AM - 8:00 PM<br>
+                                Sunday: 10:00 AM - 6:00 PM</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-card social-card">
+                        <div class="contact-details">
+                            <h3>Follow Us</h3>
+                            <p>Stay connected for the latest updates, offers, and beauty tips!</p>
+                            <div class="social-links">
+                                <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                                <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                                <a href="#" class="social-link"><i class="fab fa-pinterest"></i></a>
+                                <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="contact-form-wrapper">
+                    <div class="form-header">
+                        <h2>Send Us a Message</h2>
+                        <p>Fill out the form below and we'll get back to you as soon as possible.</p>
+                    </div>
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>First Name <span class="required">*</span></label>
+                                <input type="text" placeholder="John" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Last Name <span class="required">*</span></label>
+                                <input type="text" placeholder="Doe" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Email Address <span class="required">*</span></label>
+                                <input type="email" placeholder="john@example.com" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Phone Number</label>
+                                <input type="tel" placeholder="(123) 456-7890">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Service Interest</label>
+                            <select>
+                                <option value="">Select a Service</option>
+                                <option value="hair">Hair Care</option>
+                                <option value="skin">Skin Care</option>
+                                <option value="makeup">Makeup</option>
+                                <option value="spa">Spa & Wellness</option>
+                                <option value="nails">Nail Art</option>
+                                <option value="bridal">Bridal Package</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Your Message <span class="required">*</span></label>
+                            <textarea placeholder="Tell us how we can help you..." required></textarea>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" id="privacy" required>
+                            <label for="privacy">I agree to the <a href="#">Privacy Policy</a> and consent to being
+                                contacted regarding my inquiry.</label>
+                        </div>
+                        <button type="submit" class="submit-btn">
+                            Send Message <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section">
+        <div class="map-container">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.9663095343025!2d-74.00425878459559!3d40.74076794379132!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259bf5c1654f3%3A0xc80f9cfce5383d5d!2sGoogle!5e0!3m2!1sen!2sus!4v1629794729405!5m2!1sen!2sus"
+                allowfullscreen="" loading="lazy"></iframe>
+            <div class="map-overlay">
+                <h3>Glamour Beauty Salon</h3>
+                <div class="map-overlay-info">
+                    <div class="map-overlay-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>123 Beauty Street, Fashion District<br>New York, NY 10001</span>
+                    </div>
+                    <div class="map-overlay-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <span>(123) 456-7890</span>
+                    </div>
+                    <div class="map-overlay-item">
+                        <i class="fas fa-clock"></i>
+                        <span>Mon - Sat: 9AM - 8PM<br>Sunday: 10AM - 6PM</span>
+                    </div>
+                </div>
+                <a href="https://maps.google.com" target="_blank" class="get-directions-btn">
+                    <i class="fas fa-directions"></i> Get Directions
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Got Questions?</span>
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <p class="section-description">Find answers to common questions about our services and policies.</p>
+            </div>
+            <div class="faq-container">
+                <div class="faq-item active">
+                    <div class="faq-question">
+                        <h4>How do I book an appointment?</h4>
+                        <div class="faq-icon">
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            You can book an appointment through our online booking system on our website, by calling us
+                            at (123) 456-7890, or by visiting our salon in person. We recommend booking in advance to
+                            secure your preferred time slot, especially for weekends and special occasions.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>What is your cancellation policy?</h4>
+                        <div class="faq-icon">
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            We require a minimum of 24 hours notice for cancellations or rescheduling. Late
+                            cancellations or no-shows may be subject to a cancellation fee of 50% of the service price.
+                            We understand emergencies happen, so please contact us as soon as possible if you need to
+                            make changes.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>Do you offer bridal packages?</h4>
+                        <div class="faq-icon">
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Yes! We offer comprehensive bridal packages that include hair styling, makeup, manicure,
+                            pedicure, and spa treatments. We also provide trial sessions before your big day. Contact us
+                            for a personalized bridal consultation and package pricing.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>What payment methods do you accept?</h4>
+                        <div class="faq-icon">
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            We accept all major credit cards (Visa, MasterCard, American Express), debit cards, cash,
+                            and digital payment methods including Apple Pay and Google Pay. We also offer gift cards
+                            that make perfect presents for your loved ones.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>Is parking available?</h4>
+                        <div class="faq-icon">
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Yes, we have complimentary parking available for our clients. Our parking lot is located
+                            directly behind the salon. Street parking is also available nearby. We offer validated
+                            parking for appointments over 2 hours.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>Do you use cruelty-free products?</h4>
+                        <div class="faq-icon">
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Absolutely! We are committed to using cruelty-free and environmentally conscious products.
+                            We carry a selection of organic and vegan beauty products. Please let us know if you have
+                            any specific product preferences or allergies.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hours Section -->
+    <section class="hours-section">
+        <div class="container">
+            <div class="hours-container">
+                <div class="hours-content">
+                    <h2>Our Working Hours</h2>
+                    <p>We're here to make you look and feel your best. Visit us during our regular business hours or
+                        book an appointment online for your convenience. Walk-ins are welcome, but appointments are
+                        recommended to ensure availability.</p>
+                    <a href="booking.html" class="btn btn-primary btn-lg">Book Your Visit</a>
+                </div>
+                <div class="hours-card">
+                    <h3>Opening Hours</h3>
+                    <div class="hours-list">
+                        <div class="hours-item">
+                            <span class="day">Monday</span>
+                            <span class="time">9:00 AM - 8:00 PM</span>
+                        </div>
+                        <div class="hours-item">
+                            <span class="day">Tuesday</span>
+                            <span class="time">9:00 AM - 8:00 PM</span>
+                        </div>
+                        <div class="hours-item">
+                            <span class="day">Wednesday</span>
+                            <span class="time">9:00 AM - 8:00 PM</span>
+                        </div>
+                        <div class="hours-item">
+                            <span class="day">Thursday</span>
+                            <span class="time">9:00 AM - 8:00 PM</span>
+                        </div>
+                        <div class="hours-item">
+                            <span class="day">Friday</span>
+                            <span class="time">9:00 AM - 9:00 PM</span>
+                        </div>
+                        <div class="hours-item">
+                            <span class="day">Saturday</span>
+                            <span class="time">9:00 AM - 8:00 PM</span>
+                        </div>
+                        <div class="hours-item">
+                            <span class="day">Sunday</span>
+                            <span class="time">10:00 AM - 6:00 PM</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <div class="cta-text">
+                    <h3>Ready for a Transformation?</h3>
+                    <p>Book your appointment today and let us pamper you!</p>
+                </div>
+                <a href="booking.html" class="cta-btn">
+                    <i class="fas fa-calendar-alt"></i> Book Now
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-top">
+            <div class="container">
+                <div class="footer-grid">
+                    <div class="footer-col">
+                        <a href="index.html" class="footer-logo">
+                            <span class="logo-icon"><i class="fas fa-spa"></i></span>
+                            <span class="logo-text">Glamour</span>
+                        </a>
+                        <p class="footer-about">Experience the ultimate in beauty and relaxation at Glamour Beauty
+                            Salon. Our expert team is dedicated to making you look and feel amazing.</p>
+                        <div class="footer-social">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-pinterest"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Quick Links</h4>
+                        <ul class="footer-links">
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="services.html">Our Services</a></li>
+                            <li><a href="pricing.html">Pricing</a></li>
+                            <li><a href="team.html">Our Team</a></li>
+                            <li><a href="gallery.html">Gallery</a></li>
+                            <li><a href="blog.html">Blog</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Our Services</h4>
+                        <ul class="footer-links">
+                            <li><a href="services.html#hair">Hair Care</a></li>
+                            <li><a href="services.html#skin">Skin Care</a></li>
+                            <li><a href="services.html#makeup">Makeup</a></li>
+                            <li><a href="services.html#spa">Spa & Massage</a></li>
+                            <li><a href="services.html#nails">Nail Art</a></li>
+                            <li><a href="services.html#bridal">Bridal Packages</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Contact Info</h4>
+                        <ul class="footer-contact">
+                            <li>
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>123 Beauty Street, Fashion District<br>New York, NY 10001</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-phone"></i>
+                                <span>(123) 456-7890</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-envelope"></i>
+                                <span>info@glamourbeauty.com</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-clock"></i>
+                                <span>Mon - Sat: 9:00 AM - 8:00 PM<br>Sunday: 10:00 AM - 6:00 PM</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="footer-bottom-content">
+                    <p>&copy; 2024 Glamour Beauty Salon. All Rights Reserved.</p>
+                    <ul class="footer-bottom-links">
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Sitemap</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Success Modal -->
+    <div class="success-modal" id="successModal">
+        <div class="modal-content">
+            <div class="modal-icon">
+                <i class="fas fa-check"></i>
+            </div>
+            <h3>Message Sent!</h3>
+            <p>Thank you for contacting us. We'll get back to you within 24 hours.</p>
+            <button class="modal-btn" id="closeModal">Got It</button>
+        </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/1234567890" class="whatsapp-btn" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileClose = document.getElementById('mobileClose');
+        const navMenu = document.getElementById('navMenu');
+        const body = document.body;
+
+        menuToggle.addEventListener('click', function () {
+            navMenu.classList.add('active');
+            menuToggle.classList.add('active');
+            body.style.overflow = 'hidden';
+        });
+
+        mobileClose.addEventListener('click', function () {
+            navMenu.classList.remove('active');
+            menuToggle.classList.remove('active');
+            body.style.overflow = '';
+        });
+
+        const navLinks = document.querySelectorAll('.nav-link:not(.dropdown-toggle)');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function () {
+                if (window.innerWidth <= 768) {
+                    navMenu.classList.remove('active');
+                    menuToggle.classList.remove('active');
+                    body.style.overflow = '';
+                }
+            });
+        });
+
+        // Mobile dropdown toggle
+        const servicesDropdown = document.getElementById('servicesDropdown');
+        const dropdownToggle = servicesDropdown.querySelector('.dropdown-toggle');
+
+        dropdownToggle.addEventListener('click', function (e) {
+            if (window.innerWidth <= 768) {
+                e.preventDefault();
+                servicesDropdown.classList.toggle('active');
+            }
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function (e) {
+            if (window.innerWidth <= 768) {
+                if (!navMenu.contains(e.target) && !menuToggle.contains(e.target)) {
+                    navMenu.classList.remove('active');
+                    menuToggle.classList.remove('active');
+                    body.style.overflow = '';
+                }
+            }
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', function () {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Back to Top Button
+        const backToTop = document.getElementById('backToTop');
+
+        window.addEventListener('scroll', function () {
+            if (window.scrollY > 300) {
+                backToTop.classList.add('show');
+            } else {
+                backToTop.classList.remove('show');
+            }
+        });
+
+        backToTop.addEventListener('click', function () {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Prevent menu closing when clicking inside dropdown menu
+        const dropdownMenu = servicesDropdown.querySelector('.dropdown-menu');
+        dropdownMenu.addEventListener('click', function (e) {
+            e.stopPropagation();
+        });
+
+        // FAQ Accordion
+        const faqItems = document.querySelectorAll('.faq-item');
+
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                const isActive = item.classList.contains('active');
+
+                // Close all items
+                faqItems.forEach(faq => faq.classList.remove('active'));
+
+                // Open clicked item if it wasn't active
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Contact Form Submission
+        const contactForm = document.getElementById('contactForm');
+        const successModal = document.getElementById('successModal');
+        const closeModal = document.getElementById('closeModal');
+
+        contactForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            // Simulate form submission
+            successModal.classList.add('show');
+            contactForm.reset();
+        });
+
+        closeModal.addEventListener('click', function () {
+            successModal.classList.remove('show');
+        });
+
+        successModal.addEventListener('click', function (e) {
+            if (e.target === successModal) {
+                successModal.classList.remove('show');
+            }
+        });
+    </script>
+</body>
+
+</html>
